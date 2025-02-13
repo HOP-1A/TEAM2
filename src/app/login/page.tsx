@@ -37,10 +37,10 @@ const Login = () => {
      
     const onSubmit = (values: z.infer<typeof formSchema>) => {
         const number = Number(values.number)
-        console.log(number)
     }
+
   const router = useRouter()
-  
+
   return (
     <div className="flex w-[100vw] h-[90vh] justify-center items-center">
         <Form {...form}>
