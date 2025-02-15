@@ -19,10 +19,13 @@ import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
   number: z.coerce.number().min(10000000, {
-    message: "Phone number must be valid",
+    message: "Утасны дугаар буруу байна",
   }).max(99999999, {
-    message: "Phone number must be valid",
+    message: "Утасны дугаар буруу байна",
   }),
+  password: z.string().min(4,{
+    message: 'Хамгийн багадаа 4 орон байна.'
+  })
 })
 
 
@@ -32,6 +35,7 @@ const Login = () => {
         resolver: zodResolver(formSchema),
         defaultValues: {
           number: 0,
+          password: ''
         },
       })
      
@@ -46,19 +50,32 @@ const Login = () => {
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 w-[500px] rounded-md flex flex-col justify-center" style={{boxShadow:"rgba(0, 0, 0, 0.05) 0px 0px 16px"}}>
                 <div>Нэвтрэх</div>
-                <FormField
-                control={form.control}
-                name="number"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Утасны дугаар</FormLabel>
-                    <FormControl>
-                        <Input placeholder="12345678" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
+                  <FormField
+                  control={form.control}
+                  name="number"
+                  render={({ field }) => (
+                      <FormItem>
+                      <FormLabel>Утасны дугаар</FormLabel>
+                      <FormControl>
+                          <Input placeholder="123456**" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                      </FormItem>
+                  )}
+                  />
+                  <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                      <FormItem>
+                      <FormLabel>Нууц үг</FormLabel>
+                      <FormControl>
+                          <Input type="password" placeholder="****" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                      </FormItem>
+                  )}
+                  />
                 <Button type="submit">Нэвтрэх</Button>
                 <div className="flex w-[100%] justify-center">Эсвэл</div>
                 <Button onClick={() => router.push('/signup')}>Бүртгүүлэх</Button>
