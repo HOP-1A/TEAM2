@@ -61,7 +61,7 @@ const signUp = () => {
                 />
                 <Button type="submit">Бүртгүүлэх</Button>
                 <div className="flex w-[100%] justify-center">Эсвэл</div>
-                <Button onClick={() => router.push('/login')}>Нэвтрэх</Button>
+                <Button onClick={() => router.push('/login  ')}>Нэвтрэх</Button>
             </form>
         </Form>
     </div>
