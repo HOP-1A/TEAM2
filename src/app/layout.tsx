@@ -51,7 +51,7 @@ export default function RootLayout({
             </div>
           </div>
 
-          <div className="flex p-4 shadow-md space-x-16 justify-center">
+          <div className="flex p-4 shadow-md space-x-16 justify-center bg-white">
             <img
               className="h-[45px]"
               src="https://zary.mn/27a395c08037dc4652ee51434e509bb1.png"
