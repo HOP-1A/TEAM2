@@ -1,20 +1,19 @@
-"use client"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { number, z } from "zod"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useState } from "react"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
   username: z.string().min(1, {
@@ -31,13 +30,10 @@ const formSchema = z.object({
   password: z.string().min(6, {
     message: "Password must be at least 6 characters",
   }),
-})
+});
 
 const SignUp = () => {
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [password, setPassword] = useState("")
-  const [Username, setUsername] = useState("")
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: '',
@@ -45,20 +41,22 @@ const SignUp = () => {
       phoneNumber: "",
       password: ''
     },
-  })
+  });
+
+  const router = useRouter();
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const { phoneNumber, password } = values
-    console.log("Phone Number:", phoneNumber)
-    console.log("Password:", password)
-  }
-
-  const router = useRouter()
+    console.log("Form Values:", values);
+  };
 
   return (
     <div className="flex w-[100vw] h-[90vh] justify-center items-center">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 w-[500px] rounded-md flex flex-col justify-center" style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 16px" }}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-8 p-4 w-[500px] rounded-md flex flex-col justify-center"
+          style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 16px" }}
+        >
           <div>Бүртгүүлэх</div>
           <FormField
             control={form.control}
@@ -118,7 +116,7 @@ const SignUp = () => {
         </form>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;
