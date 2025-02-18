@@ -16,7 +16,7 @@ export const  POST = async(req: Request) => {
 
         return NextResponse.json(user)
     }catch(err){
-        return NextResponse.json({error: 'Error creating user'}, {status: 500})
+        return NextResponse.json(err, {status: 500})
     }
 }
 

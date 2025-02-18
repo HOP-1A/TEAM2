@@ -1,9 +1,16 @@
 "use client";
 
+<<<<<<< HEAD
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { number, z } from "zod";
 import { useRouter } from "next/navigation";
+=======
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { number, undefined, z } from "zod"
+import { useRouter } from "next/navigation"
+>>>>>>> e3c43e4 (needs prisma fixing)
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
+<<<<<<< HEAD
 <<<<<<< HEAD
   number: z.coerce
     .number()
@@ -38,6 +46,9 @@ const Login = () => {
   });
 =======
   number: z.coerce.number().min(10000000, {
+=======
+  phoneNumber: z.coerce.number().min(10000000, {
+>>>>>>> e3c43e4 (needs prisma fixing)
     message: "Утасны дугаар буруу байна",
   }).max(99999999, {
     message: "Утасны дугаар буруу байна",
@@ -53,13 +64,18 @@ const Login = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-          number: 0,
+          phoneNumber: "",
           password: ''
         },
       })
      
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        const number = Number(values.number)
+    const onSubmit = async(values: z.infer<typeof formSchema>) => {
+        const user = await fetch('api/login', {
+          method: 'POST',
+          body: JSON.stringify(values)
+        })
+
+        console.log(user)
     }
 >>>>>>> 7908b6b (idk)
 
@@ -103,7 +119,7 @@ const Login = () => {
                 <div>Нэвтрэх</div>
                   <FormField
                   control={form.control}
-                  name="number"
+                  name="phoneNumber"
                   render={({ field }) => (
                       <FormItem>
                       <FormLabel>Утасны дугаар</FormLabel>
