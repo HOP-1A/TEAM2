@@ -1,5 +1,4 @@
 "use client"
- 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { number, z } from "zod"
@@ -16,59 +15,110 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
- 
+
 const formSchema = z.object({
-  number: z.coerce.number().min(10000000, {
+  username: z.string().min(1, {
+    message: "Username is required",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email",
+  }),
+  phoneNumber: z.coerce.number().min(10000000, {
     message: "Phone number must be valid",
   }).max(99999999, {
     message: "Phone number must be valid",
   }),
+  password: z.string().min(6, {
+    message: "Password must be at least 6 characters",
+  }),
 })
- 
- 
- 
-const signUp = () => {
-   const [phoneNumber, setphoneNumber] = useState("")
-   const [password, setPassword] = useState("")
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-        },
-      })
-     
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        const number = Number(values.number)
-        console.log(number)
-    }
-    
+
+const SignUp = () => {
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [password, setPassword] = useState("")
+  const [Username, setUsername] = useState("")
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: '',
+      email: '',
+      phoneNumber: "",
+      password: ''
+    },
+  })
+
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    const { phoneNumber, password } = values
+    console.log("Phone Number:", phoneNumber)
+    console.log("Password:", password)
+  }
+
   const router = useRouter()
- 
+
   return (
     <div className="flex w-[100vw] h-[90vh] justify-center items-center">
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 w-[500px] rounded-md flex flex-col justify-center" style={{boxShadow:"rgba(0, 0, 0, 0.05) 0px 0px 16px"}}>
-                <div>Бүртгүүлэх</div>
-                <FormField
-                control={form.control}
-                name="number"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Утасны дугаар</FormLabel>
-                    <FormControl>
-                        <Input placeholder="9911****" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-                <Button type="submit">Бүртгүүлэх</Button>
-                <div className="flex w-[100%] justify-center">Эсвэл</div>
-                <Button onClick={() => router.push('/login  ')}>Нэвтрэх</Button>
-            </form>
-        </Form>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-4 w-[500px] rounded-md flex flex-col justify-center" style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 0px 16px" }}>
+          <div>Бүртгүүлэх</div>
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Username" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Email" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phoneNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Утасны дугаар</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="9911****" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Password" type="password" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Бүртгүүлэх</Button>
+          <div className="flex w-[100%] justify-center">Эсвэл</div>
+          <Button onClick={() => router.push('/login')}>Нэвтрэх</Button>
+        </form>
+      </Form>
     </div>
- 
   )
 }
- 
-export default signUp
+
+export default SignUp
