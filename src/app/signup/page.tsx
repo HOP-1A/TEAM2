@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { number, z } from "zod"
 import { useRouter } from "next/navigation"
- 
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -16,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
  
 const formSchema = z.object({
   number: z.coerce.number().min(10000000, {
@@ -28,6 +28,8 @@ const formSchema = z.object({
  
  
 const signUp = () => {
+   const [phoneNumber, setphoneNumber] = useState("")
+   const [password, setPassword] = useState("")
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
