@@ -11,7 +11,6 @@ import { MessageCircle } from "lucide-react";
 import { ShoppingCart } from "lucide-react";
 import { User } from "lucide-react";
 import { Camera } from "lucide-react";
-import router from "next/router";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,7 +78,7 @@ export default function RootLayout({
               <button className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
                 <ShoppingCart />
               </button>
-              <button onClick={() => router.push('/user')} className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
+              <button  className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
                 <User  />
               </button>
               <button className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
