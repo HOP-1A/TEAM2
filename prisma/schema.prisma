@@ -19,6 +19,27 @@ generator client {
     phoneNumber String @unique
     email String  @unique
     password String
+    products Products[]
     updatedAt DateTime @updatedAt
     createdAt DateTime @default(now())
+  }
+
+  model Products {
+    id String @id @default(uuid())
+    productName String 
+    category Category @relation(fields: [categoryId], references: [id])
+    categoryId String
+    price Int
+    images String
+    totalCount Int
+    user Users @relation(fields: [userId], references: [id])
+    userId String
+    updatedAt DateTime @updatedAt
+    createdAt DateTime @default(now())
+  }
+
+  model Category {
+    id String @id @default(uuid())
+    categoryName String @unique
+    products Products[]
   }

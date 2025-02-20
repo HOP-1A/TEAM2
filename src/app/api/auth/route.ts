@@ -10,7 +10,6 @@ export const POST = async(req: Request) => {
                 phoneNumber: body.phoneNumber
             }
         })
-        console.log(user)
         if(!user) return NextResponse.json({message: 'User not found'})
 
         if(user.password != body.password) return NextResponse.json({message: 'Password is invalid'})
