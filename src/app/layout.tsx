@@ -78,8 +78,8 @@ export default function RootLayout({
               <button className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
                 <ShoppingCart />
               </button>
-              <button className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
-                <User />
+              <button  className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
+                <User  />
               </button>
               <button className="shadow-md rounded-3xl bg-[#eeeff7] w-10 h-10 flex justify-center items-center transition-transform transform hover:scale-125 hover:bg-[#d2e4f7]">
                 <Camera />
