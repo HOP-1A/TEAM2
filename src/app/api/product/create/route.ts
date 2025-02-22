@@ -4,7 +4,6 @@ import { NextResponse } from "next/server"
 export const POST = async(req: Request) => {
     try{
         const body: any = await req.json()
-        console.log(body)
 
         
         const product = await prisma.products.create({

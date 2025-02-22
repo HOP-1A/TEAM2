@@ -4,7 +4,6 @@ import { NextResponse } from "next/server"
 export const POST = async(req: Request) => {
     try{
         const body: any = await req.json()
-        console.log(body)
 
         const categoryItems = await prisma.category.findUnique({
             where: {
@@ -14,7 +13,6 @@ export const POST = async(req: Request) => {
                 products:true
             }
         })
-        console.log(categoryItems)
 
         if(!categoryItems) return NextResponse.json("not found")
 

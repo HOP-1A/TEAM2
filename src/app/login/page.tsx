@@ -64,7 +64,7 @@ const Login = () => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-          phoneNumber: "",
+          phoneNumber: 0,
           password: ''
         },
       })
@@ -74,8 +74,6 @@ const Login = () => {
           method: 'POST',
           body: JSON.stringify(values)
         })
-
-        console.log(user)
     }
 >>>>>>> 7908b6b (idk)
 
