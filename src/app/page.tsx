@@ -1,8 +1,10 @@
-import { CardSmall } from "./_components/CardSmall";
+"use client"
+import Carousel from "./components/carousel";
+export default function Home() {
 
-const Page = () => {
-  return <>
-  </>;
-};
-
-export default Page;
+  return (
+    <div>
+<Carousel />
+    </div>
+  );
+}
