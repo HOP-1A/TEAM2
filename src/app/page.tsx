@@ -1,5 +1,8 @@
+import { CardSmall } from "./_components/CardSmall";
+
 const Page = () => {
-  return <></>;
+  return <>
+  </>;
 };
 
 export default Page;
