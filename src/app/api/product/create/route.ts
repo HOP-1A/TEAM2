@@ -6,13 +6,18 @@ export const POST = async(req: Request) => {
         const body: any = await req.json()
         console.log(body)
 
-        const product = await prisma.products.findUnique({
-            where: {
-                id: body.id
+        
+        const product = await prisma.products.create({
+            data: {
+                productName: body.productName,
+                categoryId: body.categoryId,
+                price: Number(body.price),
+                images: body.images,
+                totalCount: Number(body.totalCount),
+                userId: body.userId
             }
-        })
-
-        if(!product) return NextResponse.json("not found")
+        });
+        
 
         return NextResponse.json(product)
     }catch(err){

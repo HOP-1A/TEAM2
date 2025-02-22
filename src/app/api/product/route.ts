@@ -8,7 +8,17 @@ export const POST = async(req: Request) => {
 
         const product = await prisma.products.findUnique({
             where: {
-                id: body.id
+                id: body.productId
+            },
+            include: {
+                category:true,
+                user: {
+                    select: {
+                        id: true,
+                        username: true,
+                        phoneNumber: true
+                    }
+                }
             }
         })
 
@@ -22,8 +32,8 @@ export const POST = async(req: Request) => {
 
 export const GET = async() => {
     try{
-        const categories = await prisma.products.findMany()
-        return NextResponse.json(categories)
+        const products = await prisma.products.findMany()
+        return NextResponse.json(products)
     }catch(err){
         return NextResponse.json(err, {status: 500})
     }

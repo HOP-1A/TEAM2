@@ -8,12 +8,13 @@ export const POST = async(req: Request) => {
 
         const categoryItems = await prisma.category.findUnique({
             where: {
-                categoryName: body.categoryName
+                id: body.categoryId
             },
             include: {
                 products:true
             }
         })
+        console.log(categoryItems)
 
         if(!categoryItems) return NextResponse.json("not found")
 

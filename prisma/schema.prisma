@@ -30,7 +30,7 @@ generator client {
     category Category @relation(fields: [categoryId], references: [id])
     categoryId String
     price Int
-    images String
+    images String[]
     totalCount Int
     user Users @relation(fields: [userId], references: [id])
     userId String
@@ -42,4 +42,6 @@ generator client {
     id String @id @default(uuid())
     categoryName String @unique
     products Products[]
+    updatedAt DateTime @updatedAt
+    createdAt DateTime @default(now())
   }
