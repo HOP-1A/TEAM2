@@ -4,7 +4,7 @@ import { Heart } from "lucide-react";
 export const CardSmall = () => {
   return (
     <>
-      <Card className="w-[175px] h-[278px]">
+      <Card className="w-[175px] h-[278px] hover:shadow-xl duration-100">
         <img
           className="w-[175px] h-[175px] object-contain "
           src="https://cdnp.cody.mn/spree/images/2854987/product/IMG_5555.jpeg"
