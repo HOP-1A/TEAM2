@@ -1,18 +1,20 @@
-    import { prisma } from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 import { NextResponse } from "next/server"
 
 export const  POST = async(req: Request) => {
     try{
         const body = await req.json()
+        console.log(body)
 
         const user = await prisma.users.create({
             data: {
                 email: body.email,
                 username: body.username,
-                phoneNumber: body.phoneNumber,
+                phoneNumber: String(body.phoneNumber),
                 password: body.password
             }
         })
+        console.log(user)
 
         return NextResponse.json(user)
     }catch(err){

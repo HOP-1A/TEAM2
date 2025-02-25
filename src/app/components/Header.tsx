@@ -50,8 +50,8 @@ export const Header = () => {
 
         <div className="flex items-center">
           <div className="flex items-center border-2 border-black rounded-md w-[650px]">
-            <Dialog open={isOpen} onOpenChange={setIsOpen}>
-              <DialogTrigger>
+
+
                 <button
                   className="flex items-center gap-2 bg-[#eff3f6] px-4 py-2 text-sm rounded-sm h-[43px]"
                   onClick={() => setIsOpen(true)}
@@ -69,42 +69,9 @@ export const Header = () => {
                     <path d="M151.5 347.8 3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"></path>
                   </svg>
                 </button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Edit Profile</DialogTitle>
-                  <DialogDescription>
-                    Make changes to your profile here. Click save when you're
-                    done.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="grid gap-4 py-4">
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <label htmlFor="name" className="text-right">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      defaultValue="Pedro Duarte"
-                      className="col-span-3 border p-2 rounded"
-                    />
-                  </div>
-                  <div className="grid grid-cols-4 items-center gap-4">
-                    <label htmlFor="username" className="text-right">
-                      Username
-                    </label>
-                    <input
-                      id="username"
-                      defaultValue="@peduarte"
-                      className="col-span-3 border p-2 rounded"
-                    />
-                  </div>
-                </div>
-                <div className="flex justify-end">
-                  <button>Save</button>
-                </div>
-              </DialogContent>
-            </Dialog>
+
+            
+
             <input
               className="flex-1 p-2 outline-none"
               type="text"

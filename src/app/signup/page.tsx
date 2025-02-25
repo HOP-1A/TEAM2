@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -45,9 +44,31 @@ const SignUp = () => {
 
   const router = useRouter();
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log("Form Values:", values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      console.log(values)
+      const response = await fetch('/api/user', { 
+        method: 'POST',
+        // headers: {
+        //   'Content-Type': 'application/json',
+        // },
+        body: JSON.stringify(values),
+      });
+  
+      // if (!response.ok) {
+      //   const errorData = await response.json();
+      //   throw new Error(errorData.message || 'Signup failed');
+      // }
+  
+      const data = await response.json();
+      console.log("User created:", data);
+      router.push('/login');
+    } catch (error) {
+      console.error("Error during signup:", error);
+      alert(`Error during signup: ${error.message}`); 
+    }
   };
+  
 
   return (
     <div className="flex w-[100vw] h-[90vh] justify-center items-center">
