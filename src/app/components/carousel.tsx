@@ -1,8 +1,5 @@
 
 const Carousel = () => {
-  
-
-  
 
   return (
     <div className="flex mt-40 space-x-4 flex-col sm:flex-row">
