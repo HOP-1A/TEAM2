@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useState } from "react";
 
 const formSchema = z.object({
   phoneNumber: z.coerce.number().min(10000000, {
@@ -29,6 +30,7 @@ const formSchema = z.object({
 });
 
 const Login = () => {
+  const [data, setData] = useState('')
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,15 +38,25 @@ const Login = () => {
       password: ''
     },
   })
-     
-    const onSubmit = async(values: z.infer<typeof formSchema>) => {
-        const user = await fetch('api/login', {
-          method: 'POST',
-          body: JSON.stringify(values)
-        })
-    }
 
   const router = useRouter();
+     
+    const onSubmit = async(values: z.infer<typeof formSchema>) => {
+        const user = await fetch('api/auth', {
+          method: 'POST',
+          body: JSON.stringify(values)
+        }).then(res => res.json())
+        .then(res => {
+          if (res.message == 'logged in'){ 
+            setData(res.info)
+            console.log(data)
+            localStorage.setItem('userId', res.info.id)
+            router.push('/')
+          }else{
+            alert('Please check your information')
+          }
+        })
+    }
 
   return (
     <div className="flex w-[100vw] h-[90vh] justify-center items-center">
