@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Card } from "@/components/ui/card";
 import { Heart } from "lucide-react";
 

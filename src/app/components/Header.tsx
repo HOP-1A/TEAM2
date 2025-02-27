@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Search } from "lucide-react";
@@ -74,7 +75,7 @@ export const Header = () => {
                 <DialogHeader>
                   <DialogTitle>Edit Profile</DialogTitle>
                   <DialogDescription>
-                    Make changes to your profile here. Click save when you're
+                    Make changes to your profile here. Click save when you&lsquo;re
                     done.
                   </DialogDescription>
                 </DialogHeader>
